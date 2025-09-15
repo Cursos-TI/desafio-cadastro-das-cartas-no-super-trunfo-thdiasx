@@ -4,12 +4,15 @@ int main() {
 
     //declaração das variaveis 
 
-    int PontoTuristico1,PontoTuristico2,Populaçao1, Populacao2;
+    int PontoTuristico1,PontoTuristico2;
+    unsigned long int Populaçao1, Populacao2;
     float PIB1,PIB2,Area1,Area2;
     float DensidadePopulacional1,DensidadePopulacional2;
     float PIBpc1,PIBpc2;
     char Estado1,Estado2;
-    char Cidade1[10],Cidade2[10],Codigo1[10],Codigo2[10] ;
+    char Cidade1[20],Cidade2[20],Codigo1[10],Codigo2[10] ;
+    int SuperPoder1,SuperPoder2;
+    int Rpib,Rarea,Rpopulacao,Rdensidade,Rpibpc,Rsuperpoder,Rpontoturistico;
 
     // inserindo os dados para registrar as duas cartas
 
@@ -42,6 +45,11 @@ int main() {
     PIBpc1 = (float) (PIB1 * 1000000000.0) / Populaçao1;
     PIBpc2 = (float) (PIB2 * 1000000000.0) / Populacao2;
 
+    //Calculando o super poder
+
+    SuperPoder1 = Area1 + PIB1 + (double)PontoTuristico1 + (double)Populaçao1 + PIBpc1 + DensidadePopulacional1;
+    SuperPoder2 = Area2 + PIB2 + (double)PontoTuristico2 + (double)Populacao2 + PIBpc2 + DensidadePopulacional2;
+    
     // Printando a primeira carta na tela
 
     printf("CARTA 1:\n");
@@ -68,6 +76,27 @@ int main() {
     printf("Pontos Turisticos: %d \n", PontoTuristico2);
     printf("Densidade Populacional: %.2f hab/km² \n",DensidadePopulacional2);
     printf("PIB per capita: %.2f reais \n",PIBpc2);
+    printf("\n");
+
+
+    //comparacao das cartas
+
+    Rpib = PIB1 > PIB2;
+    Rpibpc = PIBpc1 > PIBpc2;
+    Rdensidade = DensidadePopulacional1 > DensidadePopulacional2;
+    Rpopulacao = Populaçao1 > Populacao2;
+    Rsuperpoder = SuperPoder1 > SuperPoder2;
+    Rarea = Area1 > Area2;
+    Rpontoturistico = PontoTuristico1 > PontoTuristico2;
+
+    printf("******* COMPARACAO DAS CARTAS *******\n");
+    printf("Populacao: %d\n",Rpopulacao);
+    printf("Area: %.2f\n",Rarea);
+    printf("PIB: %.2f\n",Rpib);
+    printf("Pontos Turisticos: %d\n",Rpontoturistico);
+    printf("Densididade Populacional: %.2f\n",Rdensidade); 
+    printf("PIB per capita: %.2f\n", Rpibpc);
+    printf("SuperPoder: %d\n",Rsuperpoder);  
 
     return 0;
 }
